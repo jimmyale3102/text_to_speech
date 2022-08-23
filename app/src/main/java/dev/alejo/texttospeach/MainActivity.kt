@@ -24,7 +24,12 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun speak() {
-        tts!!.speak(binding.message.text, TextToSpeech.QUEUE_FLUSH, null, "")
+        binding.inputParent.error = if(binding.input.text!!.isEmpty()) {
+            getString(R.string.type_something)
+        } else {
+            tts!!.speak(binding.input.text, TextToSpeech.QUEUE_FLUSH, null, "")
+            null
+        }
     }
 
     override fun onInit(status: Int) {
