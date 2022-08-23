@@ -37,4 +37,12 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             tts!!.language = Locale.US
     }
 
+    override fun onDestroy() {
+        if(tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
+        super.onDestroy()
+    }
+
 }
