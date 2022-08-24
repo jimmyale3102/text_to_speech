@@ -1,26 +1,25 @@
-package dev.alejo.say_it
+package dev.alejo.say_it.ui
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import dev.alejo.say_it.BuildConfig
+import dev.alejo.say_it.core.MyPermission
+import dev.alejo.say_it.R
+import dev.alejo.say_it.core.extensions.snack
 import dev.alejo.say_it.databinding.ActivityMainBinding
 import java.io.File
 import java.util.*
-
 
 class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var binding: ActivityMainBinding
     private var tts: TextToSpeech? = null
-
-    private var mAudioFilename = ""
-    private val mUtteranceID = "totts"
+    private val myPermission by lazy { MyPermission(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun initComponents() {
         tts = TextToSpeech(this, this)
         binding.btnPlay.setOnClickListener { speak() }
-        binding.btnShare.setOnClickListener { shareAudio() }
+        binding.btnShare.setOnClickListener { validatePermission() }
     }
 
     private fun speak() {
@@ -44,39 +43,28 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-    private fun createFile() {
-        // Perform the dynamic permission request
-        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) requestPermissions(
-            arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-            REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE
-        )
-
-
-    }
-
     override fun onInit(status: Int) {
         if(status == TextToSpeech.SUCCESS) {
             tts!!.language = Locale.US
-            createFile()
+            myPermission.validatePermission()
         }
+    }
+
+    private fun validatePermission() {
+        if(myPermission.validatePermission())
+            shareAudio()
+        else
+            binding.mainView.snack(R.string.share_unavailable)
     }
 
     @SuppressLint("QueryPermissionsNeeded")
     private fun shareAudio() {
-        // Create audio file location
-/*
-        val dir = File(Environment.getExternalStorageDirectory().toString() + "/textToSpeach/")
-        if(!dir.exists())
-            dir.mkdir()
-        mAudioFilename = "${dir.absolutePath}/audio3.mp3"
-        */
-        val dir = File(getExternalFilesDir(null), "textToSpeech")
+        val dir = File(getExternalFilesDir(null), FOLDER_NAME)
         if (!dir.exists())
             dir.mkdir()
-        val fileName = "${dir.absolutePath}/audio.mp3"
+        val fileName = "${dir.absolutePath}/$FILE_NAME.mp3"
 
-        tts!!.synthesizeToFile(binding.input.text, null, File(fileName), "audio");
-        Log.d("Saved to ->", fileName)
+        tts!!.synthesizeToFile(binding.input.text, null, File(fileName), FILE_NAME)
 
         val uri = FileProvider.getUriForFile(
             this,
@@ -112,7 +100,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     companion object {
-        private const val REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE = 123
+        private const val FILE_NAME = "audio"
+        private const val FOLDER_NAME = "sayIt"
     }
 
 }

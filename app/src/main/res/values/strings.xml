@@ -3,4 +3,8 @@
     <string name="play">Play</string>
     <string name="type_something">Type something</string>
     <string name="share">Share</string>
+    <string name="permission_message">We need you to allow the permission so that we could share the text as an audio file</string>
+    <string name="allow">Allow</string>
+    <string name="deny">Deny</string>
+    <string name="share_unavailable">Allow permissions to share it</string>
 </resources>
