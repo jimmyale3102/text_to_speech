@@ -1,4 +1,4 @@
-package dev.alejo.texttospeach
+package dev.alejo.texttospeech
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package dev.alejo.texttospeach
+package dev.alejo.texttospeech
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -9,7 +9,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import dev.alejo.texttospeach.databinding.ActivityMainBinding
+import dev.alejo.texttospeech.databinding.ActivityMainBinding
 import java.io.File
 import java.util.*
 
