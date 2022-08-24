@@ -7,4 +7,5 @@
     <string name="allow">Allow</string>
     <string name="deny">Deny</string>
     <string name="share_unavailable">Allow permissions to share it</string>
+    <string name="slogan">¡Convert your text to audio and share it!</string>
 </resources>
