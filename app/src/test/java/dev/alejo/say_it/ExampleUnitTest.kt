@@ -1,4 +1,4 @@
-package dev.alejo.texttospeech
+package dev.alejo.say_it
 
 import org.junit.Test
 

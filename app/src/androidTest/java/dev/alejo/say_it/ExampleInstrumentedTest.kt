@@ -1,4 +1,4 @@
-package dev.alejo.texttospeech
+package dev.alejo.say_it
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "dev.alejo.texttospeech"
+        applicationId "dev.alejo.say_it"
         minSdk 28
         targetSdk 32
         versionCode 1
