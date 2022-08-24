@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TextToSpeach</string>
+    <string name="app_name">Say It</string>
     <string name="play">Play</string>
     <string name="type_something">Type something</string>
     <string name="share">Share</string>

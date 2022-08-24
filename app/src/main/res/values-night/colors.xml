@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="green">#1EA952</color>
+    <color name="blackBackground" tools:ignore="MissingDefaultResource">#131313</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="background">@color/black</color>
+    <color name="background">@color/blackBackground</color>
     <color name="onBackgroundTextColor">@color/white</color>
 </resources>
