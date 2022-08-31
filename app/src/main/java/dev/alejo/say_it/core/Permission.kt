@@ -11,7 +11,7 @@ import dev.alejo.say_it.databinding.AlertPermissionBinding
 
 class MyPermission(private val context: Context) {
 
-    private fun requestCustomPermission() {
+    fun requestCustomPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 context as Activity,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)

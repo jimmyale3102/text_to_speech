@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if(myPermission.validatePermission())
             shareAudio()
         else
-            binding.mainView.snack(R.string.share_unavailable)
+            binding.mainView.snack(this, R.string.share_unavailable)
     }
 
     @SuppressLint("QueryPermissionsNeeded")
