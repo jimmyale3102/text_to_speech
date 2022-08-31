@@ -8,4 +8,7 @@
     <string name="deny">Deny</string>
     <string name="share_unavailable">Allow permissions to share it</string>
     <string name="slogan">¡Convert your text to audio and share it!</string>
+    <string name="about">About</string>
+    <string name="pitch">Pitch</string>
+    <string name="speed">Speed</string>
 </resources>
