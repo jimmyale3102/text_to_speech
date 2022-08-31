@@ -7,42 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <!--
     <ImageButton
         android:id="@+id/aboutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginEnd="@dimen/small"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/logo_content"
         android:contentDescription="@string/about"
         android:src="@drawable/ic_info"
         android:backgroundTint="@color/background"
+        android:elevation="@dimen/small"
         app:tint="@color/green"
         app:fabSize="mini"
         tools:ignore="RelativeOverlap" />
+    -->
 
     <LinearLayout
         android:id="@+id/logo_content"
-        android:layout_above="@id/center_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium"
+        android:layout_above="@id/center_content"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/medium"
         android:gravity="top|center"
         android:orientation="vertical">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_say_it_without_bg"/>
+            app:srcCompat="@drawable/ic_say_it_without_bg" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/sloganDimen"
+            android:text="@string/slogan"
             android:textAlignment="center"
-            android:textStyle="italic"
-            android:text="@string/slogan"/>
+            android:textSize="@dimen/sloganDimen"
+            android:textStyle="italic" />
 
     </LinearLayout>
 
