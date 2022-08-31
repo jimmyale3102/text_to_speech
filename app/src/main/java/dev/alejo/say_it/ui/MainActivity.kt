@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding.inputParent.error = if(binding.input.text!!.isEmpty()) {
             getString(R.string.type_something)
         } else {
+            var pitch = binding.pitchSlider.value / 50
+            var speed = binding.speedSlider.value / 50
+            if(pitch < 0.1) pitch = 0.1f
+            if(speed < 0.1) speed = 0.1f
+            tts!!.setPitch(pitch)
+            tts!!.setSpeechRate(speed)
             tts!!.speak(binding.input.text, TextToSpeech.QUEUE_FLUSH, null, "")
             null
         }
@@ -47,6 +53,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if(status == TextToSpeech.SUCCESS) {
             tts!!.language = Locale.US
             myPermission.validatePermission()
+        } else {
+            binding.mainView.snack(this, R.string.init_failed)
         }
     }
 

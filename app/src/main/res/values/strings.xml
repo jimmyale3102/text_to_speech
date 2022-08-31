@@ -11,4 +11,5 @@
     <string name="about">About</string>
     <string name="pitch">Pitch</string>
     <string name="speed">Speed</string>
+    <string name="init_failed">Initialization failed</string>
 </resources>

@@ -59,6 +59,7 @@
             android:id="@+id/input_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/small"
             android:hint="@string/type_something"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
