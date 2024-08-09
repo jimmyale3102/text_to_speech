@@ -7,13 +7,12 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import dev.alejo.say_it.BuildConfig
-import dev.alejo.say_it.core.MyPermission
 import dev.alejo.say_it.R
+import dev.alejo.say_it.core.MyPermission
 import dev.alejo.say_it.core.extensions.snack
 import dev.alejo.say_it.databinding.ActivityMainBinding
 import java.io.File
-import java.util.*
+import java.util.Locale
 
 class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
@@ -76,7 +75,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         val uri = FileProvider.getUriForFile(
             this,
-            BuildConfig.APPLICATION_ID + ".provider",
+            "${applicationContext.packageName}.provider",
             File(fileName)
         )
 
